@@ -4,6 +4,7 @@
 
 int main(void){
 	char buffer[30];
+	char input[100];
 	int fd[2];
 	pipe(fd)==-1; 
 	pid_t pid;
@@ -11,19 +12,21 @@ int main(void){
 	pid = fork();
 	pid2 = fork();
 	if(pid==0)
-	{ 
-		write(fd[1],"from child1 to child2",30); 
+	{
+		scanf("%s",input);
+		write(fd[1],input,100); 
 	}
         else if (pid2==0)
 	{ 
-		read(fd[0],buffer,30);
+		read(fd[0],buffer,100);
 		printf("Output of child2 : %s \n\n",buffer);
         }
 	else
 	{
 		wait();
-		printf("parent\n");
+		sleep(1);
 	}
 	return 0;
 }
+
 
