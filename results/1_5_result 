@@ -1,0 +1,23 @@
+
+parent process 
+wait = -1
+child process 
+
+
+code
+#include<stdio.h>
+
+int main(void)
+{
+	int pid = fork();
+
+	if(pid==0){
+		printf("wait = %d\n",wait());
+		printf("child process \n");
+	}
+	else{	
+		printf("wait = %d\n",wait());
+		printf("parent process \n");
+	};
+	return 0;
+}

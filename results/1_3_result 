@@ -1,0 +1,42 @@
+ksh@ksh-VirtualBox:~/COMP3120/testing$ ./lab3_1_3
+hello
+goodbye
+
+
+code
+
+	//without wait() uesd sleep();
+
+#include<stdio.h>
+
+int main(void)
+{
+	int pid = fork();
+	if(pid==0){
+		printf("hello\n");//child
+	}
+	else{
+		sleep(1);
+		printf("goodbye\n");
+	};
+	return 0;
+}
+
+
+	//with wait();
+#include<stdio.h>
+
+int main(void)
+{
+	int pid = fork();
+	if(pid==0){
+		printf("hello\n");//child
+	}
+	else{
+		wait();
+		printf("goodbye\n");
+	};
+	return 0;
+}
+
+
